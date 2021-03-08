@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+</head>
+<body>
+<h3>List Product</h3>
+
+<a th:href="@{/create}">Add New Product</a>
+<form method="get" action="/search">
+    <input type="text" name="name" width="30%" size="30%" maxlength="300px" style="width: 30%">
+    <input type="submit">
+</form>
+<table id="products">
+    <tr>
+        <th>Product Name</th>
+        <th>Maker</th>
+        <th>Description</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+    <th:block th:each="product:${productList}">
+        <tr>
+            <td th:text="${product.getProductName()}"></td>
+            <td th:text="${product.getMaker()}"></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td><a th:href="@{/update/{id}(id=${product.getId()})}">Update</a></td>
+            <td><a th:href="@{/delete/{id}(id=${product.getId()})}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<p style="color: red" th:if="${productList.size()==0}">Product Not Found</p>
+
+<footer th:replace="layout::footer"></footer>
+</body>
+</html>

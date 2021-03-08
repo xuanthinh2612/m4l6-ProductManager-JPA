@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+</head>
+<body>
+<h3 align="center">Delete Product </h3>
+
+<Form method="post" th:object="${product}">
+    <table id="products">
+        <tr>
+            <td>Product Name</td>
+            <td th:text="${product.getProductName()}"></td>
+        </tr>
+        <tr>
+            <td>Maker</td>
+            <td th:text="${product.getMaker()}"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td th:text="${product.getDescription()}"></td>
+        </tr>
+    </table>
+    <button type="submit">Delete</button>
+</Form>
+<footer th:replace="layout::footer"></footer>
+</body>
+</html>
